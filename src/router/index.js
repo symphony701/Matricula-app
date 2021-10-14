@@ -61,6 +61,16 @@ const routes = [{
                 component: require('../components/student-views/Historial.vue').default
             }
         ]
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: () =>
+            import ('../views/DashboardAdmin.vue'),
+        children: [{
+            path: 'principal',
+            component: require('../components/student-views/Principal.vue').default
+        }]
     }
 ]
 
