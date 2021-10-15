@@ -68,9 +68,30 @@ const routes = [{
         component: () =>
             import ('../views/DashboardAdmin.vue'),
         children: [{
-            path: 'principal',
-            component: require('../components/student-views/Principal.vue').default
-        }]
+                path: 'principal',
+                component: require('../components/admin-views/Principal.vue').default
+            },
+            {
+                path: 'aceptar-eliminar',
+                component: require('../components/admin-views/AprobarRechazar.vue').default
+            },
+            {
+                path: 'lista-matricula',
+                component: require('../components/admin-views/ListaMatricula.vue').default
+            },
+            {
+                path: 'crear-docente',
+                component: require('../components/admin-views/CrearDocente.vue').default
+            },
+            {
+                path: 'crear-curso',
+                component: require('../components/admin-views/CrearCurso.vue').default
+            },
+            {
+                path: 'crear-seccion',
+                component: require('../components/admin-views/CrearSeccion.vue').default
+            }
+        ]
     }
 ]
 
