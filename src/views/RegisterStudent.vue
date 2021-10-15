@@ -8,21 +8,21 @@
         <v-col>
           <v-text-field
             label="Código de alumno"
-            
+            v-model="CAlumno"
             hide-details="auto"
           ></v-text-field
         ></v-col>
         <v-col>
           <v-text-field
             label="Nombres"
-            
+            v-model="Nombre"
             hide-details="auto"
           ></v-text-field
         ></v-col>
         <v-col>
           <v-text-field
             label="Apellidos"
-            
+            v-model="Apellido"
             hide-details="auto"
           ></v-text-field
         ></v-col>
@@ -31,7 +31,7 @@
         <v-col>
           <v-text-field
             label="DNI"
-            
+            v-model="DNI"
             hide-details="auto"
           ></v-text-field
         ></v-col>
@@ -40,6 +40,7 @@
             label="Contraseña"
             type="password"
             hide-details="auto"
+            v-model="Contrasenia"
           ></v-text-field
         ></v-col>
         <v-col>
@@ -47,6 +48,7 @@
             label="Repita su contraseña"
             type="password"
             hide-details="auto"
+            v-model="RepeatContrasenia"
           ></v-text-field
         ></v-col>
       </v-row>
@@ -55,20 +57,21 @@
           <v-text-field
             label="Correo Académico"
             type="email"
+            v-model="Correo"
             hide-details="auto"
           ></v-text-field
         ></v-col>
         <v-col>
           <v-text-field
             label="Celular"
-            
+            v-model="Celular"
             hide-details="auto"
           ></v-text-field
         ></v-col>
       </v-row>
       <v-row justify="center">
         
-        <v-btn to="/" class="button-register"  color="#2BA600" elevation="5" rounded x-large
+        <v-btn  class="button-register"  color="#2BA600" elevation="5" rounded x-large @click="addAlumno()"
             >Registrarse</v-btn
           ></v-row>
     </v-container>
@@ -76,10 +79,28 @@
 </template>
 
 <script>
+import LinkService from './../services/principalService'
 export default {
   name: "RegisterStudent",
 
   components: {},
+  data: () => ({
+    CAlumno:'',
+    DNI:null,
+    Correo:'',
+    Nombre:'',
+    Apellido:'',
+    Contrasenia:'',
+    Celular:null,
+    RepeatContrasenia:''
+  }),
+  methods:{
+    addAlumno: async function(){
+      console.log(this.CAlumno,this.DNI,this.Correo,this.Nombre,this.Apellido,this.Contrasenia,this.Celular,this.RepeatContrasenia)
+      await LinkService.addUser(this.CAlumno, parseInt(this.DNI), this.Nombre, this.Apellido, this.Contrasenia, this.Correo, parseInt(this.Celular));
+      this.$router.push('/')
+    }
+  }
 };
 </script>
 
