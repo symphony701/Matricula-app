@@ -47,16 +47,63 @@
             </b-nav-item-dropdown>
           </b-dropdown-item>
 
-          <b-dropdown-item>
-            <router-link
-              class="route-link"
-              :to="{ path: '/student/actualizar-eliminar' }"
-              >Gestión de secciones
-              
-              
-              </router-link
-            >
+          <!---->
+
+          <b-dropdown-item class="different-drop">
+            <b-nav-item-dropdown id="dropdown-2" text="Gestión de Cursos" left>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Crear curso</router-link
+                >
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Actualizar/Eliminar curso</router-link
+                >
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Listar curso</router-link
+                >
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
           </b-dropdown-item>
+
+          <!---->
+
+          <b-dropdown-item class="different-drop">
+            <b-nav-item-dropdown id="dropdown-2" text="Gestión de Secciones" left>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Crear sección</router-link
+                >
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Actualizar/Eliminar sección</router-link
+                >
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link
+                  class="route-link"
+                  :to="{ path: '/student/actualizar-eliminar' }"
+                  >Listar secciones</router-link
+                >
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-dropdown-item>
+
+
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <b-navbar-nav>
