@@ -27,7 +27,7 @@
         <b-nav-item>
           <v-btn to="/" depressed color="error"> Cerrar Sesión </v-btn>
         </b-nav-item>
-        <b-nav-item style="margin-top:5px" >Alumno 1</b-nav-item>
+        <b-nav-item style="margin-top:5px" >{{this.$store.state.user.NNombre}} {{this.$store.state.user.NApellido}}</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div class="contain-dashboard">

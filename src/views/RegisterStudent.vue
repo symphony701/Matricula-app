@@ -70,49 +70,80 @@
         ></v-col>
       </v-row>
       <v-row justify="center">
-        
-        <v-btn  class="button-register"  color="#2BA600" elevation="5" rounded x-large @click="addAlumno()"
-            >Registrarse</v-btn
-          ></v-row>
+        <v-btn
+          class="button-register"
+          color="#2BA600"
+          elevation="5"
+          rounded
+          x-large
+          @click="addAlumno()"
+          >Registrarse</v-btn
+        ></v-row
+      >
     </v-container>
   </div>
 </template>
 
 <script>
-import LinkService from './../services/principalService'
+import LinkService from "./../services/principalService";
+
+import Swal from "sweetalert2";
 export default {
   name: "RegisterStudent",
 
   components: {},
   data: () => ({
-    CAlumno:'',
-    DNI:null,
-    Correo:'',
-    Nombre:'',
-    Apellido:'',
-    Contrasenia:'',
-    Celular:null,
-    RepeatContrasenia:''
+    CAlumno: "",
+    DNI: null,
+    Correo: "",
+    Nombre: "",
+    Apellido: "",
+    Contrasenia: "",
+    Celular: null,
+    RepeatContrasenia: "",
   }),
-  methods:{
-    addAlumno: async function(){
-      console.log(this.CAlumno,this.DNI,this.Correo,this.Nombre,this.Apellido,this.Contrasenia,this.Celular,this.RepeatContrasenia)
-      await LinkService.addUser(this.CAlumno, parseInt(this.DNI), this.Nombre, this.Apellido, this.Contrasenia, this.Correo, parseInt(this.Celular));
-      this.$router.push('/')
-    }
-  }
+  methods: {
+    addAlumno: async function () {
+      console.log(
+        this.CAlumno,
+        this.DNI,
+        this.Correo,
+        this.Nombre,
+        this.Apellido,
+        this.Contrasenia,
+        this.Celular,
+        this.RepeatContrasenia
+      );
+      const res = await LinkService.addUser(
+        this.CAlumno,
+        parseInt(this.DNI),
+        this.Nombre,
+        this.Apellido,
+        this.Contrasenia,
+        this.Correo,
+        parseInt(this.Celular)
+      );
+      Swal.fire({  
+          icon: "success",
+          title: "Registro exitoso",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
 <style>
-.v-label{
-    color:black !important;
+.v-label {
+  color: black !important;
 }
-h2{
+h2 {
   text-align: center;
-  font-size:2.7em;
+  font-size: 2.7em;
 }
-.button-register{
+.button-register {
   margin-top: 20px;
 }
 </style>

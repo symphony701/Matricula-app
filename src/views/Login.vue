@@ -57,7 +57,9 @@ export default {
           timer: 1500,
         });
       }else{
-        console.log(data.at(0));
+        
+        this.$store.state.user=data.at(0)
+        console.log(this.$store.state.user)
         if(data.at(0).IdOcupacion==1){
           this.$router.push('admin/principal')
         }else if(data.at(0).IdOcupacion==2){

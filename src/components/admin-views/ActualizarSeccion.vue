@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Crear Seccion</h2>
+        <h2>Actualizar Seccion</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
@@ -44,13 +44,13 @@
       </v-row>
       <v-row justify="center">
         <v-btn
-          
+          to="/student/principal"
           class="button-register"
           color="#2BA600"
           elevation="5"
           rounded
           x-large
-          >Registrar Sección</v-btn
+          >Actualizar</v-btn
         ></v-row
       >
     </v-container>
@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  name: "CrearSeccion",
+  name: "ActualizarSeccion",
 
   components: {},
   data: () => ({}),

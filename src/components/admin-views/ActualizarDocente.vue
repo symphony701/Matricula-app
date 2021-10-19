@@ -2,55 +2,35 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Crear Seccion</h2>
+        <h2>Actualizar Docente</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
           <v-text-field
             class="input-login"
-            label="Nombres de sección"
+            label="Nombres"
             hide-details="auto"
           ></v-text-field>
-        </v-col>
-        <v-col cols="4">
-          <v-select
-            class="input-login"
-            menu-props="auto"
-            hide-details
-            label="Curso:"
-            single-line
-          ></v-select>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
-          <v-select
+          <v-text-field
             class="input-login"
-            menu-props="auto"
-            hide-details
-            label="Docente:"
-            single-line
-          ></v-select>
-        </v-col>
-        <v-col cols="4">
-          <v-select
-            class="input-login"
-            menu-props="auto"
-            hide-details
-            label="Horario:"
-            single-line
-          ></v-select>
+            label="Apellidos"
+            hide-details="auto"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-btn
-          
+          to="/student/principal"
           class="button-register"
           color="#2BA600"
           elevation="5"
           rounded
           x-large
-          >Registrar Sección</v-btn
+          >Actualizar</v-btn
         ></v-row
       >
     </v-container>
@@ -59,10 +39,12 @@
 
 <script>
 export default {
-  name: "CrearSeccion",
+  name: "ActualizarDocente",
 
   components: {},
-  data: () => ({}),
+  data: () => ({
+   
+  }),
 };
 </script>
 <style scoped>

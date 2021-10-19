@@ -90,6 +90,46 @@ const routes = [{
             {
                 path: 'crear-seccion',
                 component: require('../components/admin-views/CrearSeccion.vue').default
+            },
+            {
+                path: 'actualizar-eliminar-docente',
+                component: require('../components/admin-views/ActualizarEliminarDocente.vue').default
+            },
+            {
+                path: 'actualizar-eliminar-curso',
+                component: require('../components/admin-views/ActualizarEliminarCurso.vue').default
+            },
+            {
+                path: 'actualizar-eliminar-seccion',
+                component: require('../components/admin-views/ActulizarEliminarSeccion.vue').default
+            },
+            {
+                path: 'actualizar-docente',
+                component: require('../components/admin-views/ActualizarDocente.vue').default,
+                props: true
+            },
+            {
+                path: 'actualizar-curso',
+                name: 'actualizarCurso',
+                component: require('../components/admin-views/ActualizarCurso.vue').default,
+                props: true
+            },
+            {
+                path: 'actualizar-seccion',
+                component: require('../components/admin-views/ActualizarSeccion.vue').default,
+                props: true
+            },
+            {
+                path: 'lista-docente',
+                component: require('../components/admin-views/ListaDocente.vue').default
+            },
+            {
+                path: 'lista-curso',
+                component: require('../components/admin-views/ListaCurso.vue').default
+            },
+            {
+                path: 'lista-secciones',
+                component: require('../components/admin-views/ListaSecciones.vue').default
             }
         ]
     }

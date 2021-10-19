@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Crear Curso</h2>
+        <h2>Actualizar Curso</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
@@ -10,21 +10,20 @@
             class="input-login"
             label="Nombre del curso"
             hide-details="auto"
-            v-model="NombreCurso"
+            v-model="nombreCurso"
           ></v-text-field>
         </v-col>
       </v-row>
-     
+
       <v-row justify="center">
         <v-btn
-          
           class="button-register"
           color="#2BA600"
           elevation="5"
           rounded
           large
-          @click="addCourse()"
-          >Registrar curso</v-btn
+          @click="actualizar()"
+          >Actualizar curso</v-btn
         ></v-row
       >
     </v-container>
@@ -32,18 +31,27 @@
 </template>
 
 <script>
-  import LinkService from "./../../services/principalService";
-  import Swal from "sweetalert2";
+import LinkService from "./../../services/principalService";
+import Swal from "sweetalert2";
 export default {
-  name: "CrearCurso",
+  name: "ActualizarCurso",
+
   components: {},
   data: () => ({
-   NombreCurso:""
+    nombreCurso: "",
   }),
-  methods:{
-    addCourse: async function(){
-      if(this.NombreCurso!=""){
-        const res= await LinkService.addCourse(this.NombreCurso);
+  props: ["id"],
+  methods: {
+    async actualizar() {
+      if (this.nombreCurso == "") {
+        Swal.fire({
+          icon: "error",
+          title: "No ha escrito ninguna modificación",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        const res= await LinkService.editCourses(this.id, this.nombreCurso);
         Swal.fire({
           title: "Curso editado correctamente",
           icon: "success",
@@ -55,10 +63,9 @@ export default {
             this.$router.push("/admin/actualizar-eliminar-curso");
           }
         });
-
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

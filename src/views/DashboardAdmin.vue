@@ -3,18 +3,18 @@
     <b-navbar class="navbar" type="dark" variant="dark">
       <b-navbar-nav>
         <b-nav-item>
-          <router-link :to="{ path: '/student/principal' }">INICIO</router-link>
+          <router-link :to="{ path: '/admin/principal' }">INICIO</router-link>
         </b-nav-item>
         <b-nav-item-dropdown text="MATRÍCULA" left>
           <b-dropdown-item>
-            <router-link class="route-link" :to="{ path: '/student/solicitud' }"
+            <router-link class="route-link" :to="{ path: '/admin/aceptar-eliminar' }"
               >Aprobación/Rechazo</router-link
             >
           </b-dropdown-item>
           <b-dropdown-item>
             <router-link
               class="route-link"
-              :to="{ path: '/student/actualizar-eliminar' }"
+              :to="{ path: '/admin/lista-matricula' }"
               >Lista de matrículas</router-link
             >
           </b-dropdown-item>
@@ -26,21 +26,21 @@
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/crear-docente' }"
                   >Crear Docente</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/actualizar-eliminar-docente' }"
                   >Actualizar/Eliminar docente</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/lista-docente' }"
                   >Listar docente</router-link
                 >
               </b-dropdown-item>
@@ -54,21 +54,21 @@
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/crear-curso' }"
                   >Crear curso</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/actualizar-eliminar-curso' }"
                   >Actualizar/Eliminar curso</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/lista-curso' }"
                   >Listar curso</router-link
                 >
               </b-dropdown-item>
@@ -82,21 +82,21 @@
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/crear-seccion' }"
                   >Crear sección</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/actualizar-eliminar-seccion' }"
                   >Actualizar/Eliminar sección</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
-                  :to="{ path: '/student/actualizar-eliminar' }"
+                  :to="{ path: '/admin/lista-secciones' }"
                   >Listar secciones</router-link
                 >
               </b-dropdown-item>
@@ -110,7 +110,7 @@
         <b-nav-item>
           <v-btn to="/" depressed color="error"> Cerrar Sesión </v-btn>
         </b-nav-item>
-        <b-nav-item style="margin-top: 5px">Alumno 1</b-nav-item>
+        <b-nav-item style="margin-top: 5px">{{this.$store.state.user.NNombre}} {{this.$store.state.user.NApellido}}</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div class="contain-dashboard">
@@ -121,7 +121,7 @@
 
 <script>
 export default {
-  name: "DashboardStudent",
+  name: "Dashboardadmin",
 
   components: {},
   data() {
