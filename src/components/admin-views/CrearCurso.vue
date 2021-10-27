@@ -45,7 +45,7 @@ export default {
       if(this.NombreCurso!=""){
         const res= await LinkService.addCourse(this.NombreCurso);
         Swal.fire({
-          title: "Curso editado correctamente",
+          title: "Curso agregado correctamente",
           icon: "success",
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",

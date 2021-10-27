@@ -106,7 +106,8 @@ const routes = [{
             {
                 path: 'actualizar-docente',
                 component: require('../components/admin-views/ActualizarDocente.vue').default,
-                props: true
+                props: true,
+                name: 'actualizarDocente',
             },
             {
                 path: 'actualizar-curso',
@@ -117,7 +118,8 @@ const routes = [{
             {
                 path: 'actualizar-seccion',
                 component: require('../components/admin-views/ActualizarSeccion.vue').default,
-                props: true
+                props: true,
+                name: 'actualizarSeccion',
             },
             {
                 path: 'lista-docente',

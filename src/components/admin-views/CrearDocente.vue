@@ -10,6 +10,7 @@
             class="input-login"
             label="Nombres"
             hide-details="auto"
+            v-model="nombreProfe"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -19,17 +20,19 @@
             class="input-login"
             label="Apellidos"
             hide-details="auto"
+            v-model="apellidoProfe"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-btn
-          to="/student/principal"
+          
           class="button-register"
           color="#2BA600"
           elevation="5"
           rounded
-          x-large
+          large
+          @click="addDocente()"
           >Registrar docente</v-btn
         ></v-row
       >
@@ -38,13 +41,35 @@
 </template>
 
 <script>
+import LinkService from "./../../services/principalService";
+import Swal from "sweetalert2";
 export default {
   name: "CrearDocente",
 
   components: {},
   data: () => ({
-   
+    nombreProfe:"",
+    apellidoProfe:""
   }),
+  methods:{
+    addDocente: async function(){
+      if(this.nombreProfe!="" &&this.apellidoProfe!=""){
+        const res= await LinkService.addDocente(this.nombreProfe,this.apellidoProfe);
+        Swal.fire({
+          title: "Docente agregado correctamente",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Volver",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$router.push("/admin/actualizar-eliminar-docente");
+          }
+        });
+
+      }
+    }
+  }
 };
 </script>
 <style scoped>

@@ -65,15 +65,55 @@ class LinkService {
         return res;
     }
     async deleteCourse(id) {
+            const data = {
+                "id": id
+            }
+            const datos = await axios.get(`${this.link}/cursos/delete/${id}`)
+            const response = await axios.get(`${this.link}/cursos`);
+            const res = await response.data
+            return res
+        }
+        //SECCIONES
+    async addSeccion() {
+
+        }
+        //docente
+    async addDocente(nombre, apellido) {
+        const data = {
+            "nombre": nombre,
+            "apellido": apellido
+        }
+        const res = await axios.post(`${this.link}/crear-docente`, data);
+        return res;
+    }
+
+    async deleteDocente(id) {
         const data = {
             "id": id
         }
-        const datos = await axios.get(`${this.link}/cursos/delete/${id}`)
-        console.log(datos)
-        const response = await axios.get(`${this.link}/cursos`);
+        const datos = await axios.get(`${this.link}/docente/delete/${id}`)
+        const response = await axios.get(`${this.link}/docente`);
         const res = await response.data
         return res
     }
+    async editDocente(id, nombre, apellido) {
+        const data = {
+            "id": id,
+            "nombre": nombre,
+            "apellido": apellido
+        }
+
+        console.log(data)
+
+        const res = await axios.patch(`${this.link}/docente`, data);
+        return res;
+    }
+    async getDocente() {
+        const res = await axios.get(`${this.link}/docente`);
+        const response = await res.data
+        return response;
+    }
+
 }
 
 export default new LinkService();

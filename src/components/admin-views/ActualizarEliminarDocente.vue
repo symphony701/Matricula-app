@@ -9,126 +9,121 @@
           <v-data-table
             dense
             :headers="headers"
-            :items="desserts"
-            item-key="name"
+            :items="docentes"
+            item-key="id"
             class="elevation-1"
+            @click:row="handleRowClick"
           ></v-data-table>
         </v-col>
       </v-row>
       <v-row justify="center">
-          <v-col cols="3"><v-btn to="/student/actualizar" class="button-register"  color="#2BA600" elevation="5" rounded large
+        <v-col cols="3"
+          ><v-btn
+            class="button-register"
+            color="#2BA600"
+            elevation="5"
+            rounded
+            large
+            @click="goToActualizar()"
             >Actualizar</v-btn
-          ></v-col>
-          <v-col cols="3"><v-btn to="/student" class="button-register"  color="#2BA600" elevation="5" rounded large
+          ></v-col
+        >
+        <v-col cols="3"
+          ><v-btn
+            class="button-register"
+            color="#2BA600"
+            elevation="5"
+            rounded
+            large
+            @click="eliminar()"
             >Eliminar</v-btn
-          ></v-col>
+          ></v-col
+        >
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
+import LinkService from "./../../services/principalService";
+import Swal from "sweetalert2";
 export default {
   name: "ActualizarEliminarDocente",
 
   components: {},
   data: () => ({
     headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "start",
-        sortable: false,
-        value: "name",
-      },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
+     {
+       text:"ID:",
+       align: "start",
+       sortable: true,
+       value: "id" 
+     },
+     {text:"Nombres:",value:"nombre"}, 
+     {text:"Apellidos:",value:"apellido"}
     ],
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
-      },
-      {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%",
-      },
-      {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%",
-      },
-      {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%",
-      },
-      {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%",
-      },
-      {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%",
-      },
-      {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%",
-      },
-    ],
+    docentes: [],
+    docenteSeleccionado:null
   }),
+  methods: {
+    handleRowClick(item) {
+      Swal.fire({
+        position: "top-end",
+        title: `Seleccionaste ${item.nombre} ${item.apellido}`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      this.docenteSeleccionado = item.id;
+    },
+    goToActualizar() {
+      if (this.docenteSeleccionado == null) {
+        Swal.fire({
+          icon: "error",
+          title: "No ha seleccionado ningun docente",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      } else {
+        this.$router.push({
+          name: "actualizarDocente",
+          params: {
+            id: this.docenteSeleccionado,
+          },
+        });
+      }
+    },
+    async eliminar() {
+      if (this.docenteSeleccionado == null) {
+        Swal.fire({
+          icon: "error",
+          title: "No ha seleccionado ningun docente",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      } else {
+        const result = await Swal.fire({
+          title: "¿Está seguro de eliminar el docente?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sí,eliminar",
+          cancelButtonText: "Cancelar",
+        })
+        if(result.isConfirmed){
+          await this.delete(this.docenteSeleccionado);
+        }
+      }
+    },
+    async delete(id) {
+      const data = await LinkService.deleteDocente(id);
+      this.docentes = data;
+    },
+  },
+  mounted:async function(){
+    const data = await LinkService.getDocente();
+    this.docentes= data;
+  }
 };
 </script>
 <style scoped>

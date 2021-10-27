@@ -5,88 +5,14 @@
         <h2>Lista de docente</h2>
       </v-row>
       <v-row justify="space-around">
-        <v-col cols="3">
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Alumno:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Semestre:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Estado:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Docente:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Curso:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn
-                
-                class="button-register"
-                color="#2BA600"
-                elevation="5"
-                rounded
-                large
-                >Buscar</v-btn
-              >
-            </v-col>
-          </v-row>
-        </v-col>
+        
 
         <v-col cols="8">
           <v-data-table
             dense
             :headers="headers"
-            :items="desserts"
-            item-key="name"
+            :items="docentes"
+            item-key="id"
             class="elevation-1"
           ></v-data-table>
         </v-col>
@@ -96,168 +22,30 @@
 </template>
 
 <script>
+import LinkService from './../../services/principalService'
 export default {
   name: "ListaDocente",
 
   components: {},
   data: () => ({
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
-      },
-      {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%",
-      },
-      {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%",
-      },
-      {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%",
-      },
-      {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%",
-      },
-      {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%",
-      },
-      {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%",
-      },
-    ],
+    docentes: [],
     headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "start",
-        sortable: false,
-        value: "name",
-      },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
+     {
+       text:"ID:",
+       align: "start",
+       sortable: true,
+       value: "id" 
+     },
+     {text:"Nombres:",value:"nombre"}, 
+     {text:"Apellidos:",value:"apellido"}
     ],
-    states: [
-      "Alabama",
-      "Alaska",
-      "American Samoa",
-      "Arizona",
-      "Arkansas",
-      "California",
-      "Colorado",
-      "Connecticut",
-      "Delaware",
-      "District of Columbia",
-      "Federated States of Micronesia",
-      "Florida",
-      "Georgia",
-      "Guam",
-      "Hawaii",
-      "Idaho",
-      "Illinois",
-      "Indiana",
-      "Iowa",
-      "Kansas",
-      "Kentucky",
-      "Louisiana",
-      "Maine",
-      "Marshall Islands",
-      "Maryland",
-      "Massachusetts",
-      "Michigan",
-      "Minnesota",
-      "Mississippi",
-      "Missouri",
-      "Montana",
-      "Nebraska",
-      "Nevada",
-      "New Hampshire",
-      "New Jersey",
-      "New Mexico",
-      "New York",
-      "North Carolina",
-      "North Dakota",
-      "Northern Mariana Islands",
-      "Ohio",
-      "Oklahoma",
-      "Oregon",
-      "Palau",
-      "Pennsylvania",
-      "Puerto Rico",
-      "Rhode Island",
-      "South Carolina",
-      "South Dakota",
-      "Tennessee",
-      "Texas",
-      "Utah",
-      "Vermont",
-      "Virgin Island",
-      "Virginia",
-      "Washington",
-      "West Virginia",
-      "Wisconsin",
-      "Wyoming",
-    ],
+    
   }),
+  mounted:async function(){
+    const data = await LinkService.getDocente();
+    console.log(data)
+    this.docentes= data;
+  }
 };
 </script>
 <style scoped>
