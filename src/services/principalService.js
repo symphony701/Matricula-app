@@ -76,8 +76,24 @@ class LinkService {
         //SECCIONES
     async addSeccion() {
 
-        }
-        //docente
+    }
+    async getSecciones() {
+        const res = await axios.get(`${this.link}/secciones`);
+        const response = await res.data
+        return response;
+    }
+    async getsecciondocente() {
+        const res = await axios.get(`${this.link}/secciones-docentes`);
+        const response = await res.data
+        return response;
+    }
+    async getseccioncurso() {
+        const res = await axios.get(`${this.link}/secciones-cursos`);
+        const response = await res.data
+        return response;
+    }
+
+    //docente
     async addDocente(nombre, apellido) {
         const data = {
             "nombre": nombre,
@@ -113,6 +129,8 @@ class LinkService {
         const response = await res.data
         return response;
     }
+
+
 
 }
 

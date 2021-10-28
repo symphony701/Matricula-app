@@ -43,7 +43,6 @@ export default {
   }),
   mounted:async function(){
     const data = await LinkService.getDocente();
-    console.log(data)
     this.docentes= data;
   }
 };

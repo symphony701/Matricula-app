@@ -19,6 +19,9 @@
             hide-details
             label="Curso:"
             single-line
+            :items="cursos"
+            item-value='value'
+            item-text='text'
           ></v-select>
         </v-col>
       </v-row>
@@ -28,6 +31,9 @@
             class="input-login"
             menu-props="auto"
             hide-details
+            :items="docentes"
+            item-value='value'
+            item-text='text'
             label="Docente:"
             single-line
           ></v-select>
@@ -49,7 +55,7 @@
           color="#2BA600"
           elevation="5"
           rounded
-          x-large
+          large
           >Registrar Sección</v-btn
         ></v-row
       >
@@ -58,11 +64,24 @@
 </template>
 
 <script>
+import LinkService from './../../services/principalService'
+
 export default {
   name: "CrearSeccion",
 
   components: {},
-  data: () => ({}),
+  data: () => ({
+    cursos:[],
+    docentes:[]
+  }),
+  mounted:async function(){
+    const data1 = await LinkService.getsecciondocente();
+    const data2 = await LinkService.getseccioncurso();
+    
+    this.docentes= data1;
+    this.cursos = data2;
+    console.log(this.docentes,this.cursos)
+  }
 };
 </script>
 <style scoped>
