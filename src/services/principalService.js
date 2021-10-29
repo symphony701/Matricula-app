@@ -74,8 +74,15 @@ class LinkService {
             return res
         }
         //SECCIONES
-    async addSeccion() {
-
+    async addSeccion(nombre, docente, curso, horario) {
+        const data = {
+            "nombre": nombre,
+            "docente": docente,
+            "curso": curso,
+            "horario": horario
+        }
+        const res = await axios.post(`${this.link}/seccion`, data);
+        return res;
     }
     async getSecciones() {
         const res = await axios.get(`${this.link}/secciones`);
@@ -92,6 +99,28 @@ class LinkService {
         const response = await res.data
         return response;
     }
+
+    async deleteSeccion(id) {
+
+        const datos = await axios.get(`${this.link}/seccion/delete/${id}`)
+        const response = await axios.get(`${this.link}/secciones`);
+        const res = await response.data
+        return res
+    }
+
+    async editSeccion(id, nombre, docente, curso, horario) {
+        const data = {
+            "id": id,
+            "nombre": nombre,
+            "docente": docente,
+            "curso": curso,
+            "horario": horario
+        }
+        const res = await axios.patch(`${this.link}/seccion`, data);
+        return res;
+    }
+
+
 
     //docente
     async addDocente(nombre, apellido) {
@@ -118,9 +147,6 @@ class LinkService {
             "nombre": nombre,
             "apellido": apellido
         }
-
-        console.log(data)
-
         const res = await axios.patch(`${this.link}/docente`, data);
         return res;
     }

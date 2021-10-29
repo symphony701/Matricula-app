@@ -26,7 +26,6 @@
       </v-row>
       <v-row justify="center">
         <v-btn
-          
           class="button-register"
           color="#2BA600"
           elevation="5"
@@ -48,13 +47,13 @@ export default {
 
   components: {},
   data: () => ({
-   nombreDocente:"",
-   apellidoDocente:""
+    nombreDocente: "",
+    apellidoDocente: "",
   }),
   props: ["id"],
   methods: {
     async actualizar() {
-      if (this.nombreDocente == "" || this.apellidoDocente=="") {
+      if (this.nombreDocente == "" || this.apellidoDocente == "") {
         Swal.fire({
           icon: "error",
           title: "No ha escrito ninguna modificación",
@@ -62,8 +61,12 @@ export default {
           timer: 1500,
         });
       } else {
-        const res= await LinkService.editDocente(this.id, this.nombreDocente,this.apellidoDocente);
-        console.log(res)
+        const res = await LinkService.editDocente(
+          this.id,
+          this.nombreDocente,
+          this.apellidoDocente
+        );
+        console.log(res);
         Swal.fire({
           title: "Docente editado correctamente",
           icon: "success",
