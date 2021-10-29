@@ -156,6 +156,28 @@ class LinkService {
         return response;
     }
 
+    //solicitudes
+
+    async getSolicitudesEspera(id) {
+        const res = await axios.get(`${this.link}/solicitud-espera/${id}`);
+        const response = await res.data
+        return response;
+    }
+    async getSolicitudesSecciones() {
+        const res = await axios.get(`${this.link}/solicitud-seccion-curso`);
+        const response = await res.data
+        return response;
+    }
+
+    async addSolicitud(idAlumno, idSeccion, semestre) {
+        const data = {
+            "idAlumno": idAlumno,
+            "idSeccion": idSeccion,
+            "semestre": semestre
+        }
+        const res = await axios.post(`${this.link}/solicitud`, data);
+        return res;
+    }
 
 
 }
