@@ -207,6 +207,22 @@ class LinkService {
         return response;
     }
 
+    async getAllMatriculasAprobarRechazar() {
+        const res = await axios.get(`${this.link}/aprovar-rechazar`);
+        const response = await res.data
+        return response;
+    }
+
+    async procesarSolicitud(idMatricula, action) {
+        const datares = await axios.get(`${this.link}/matricula/procesar/${idMatricula}/${action}`)
+        const res = await datares.data
+        return res
+    }
+    async getListarMatriculas() {
+        const res = await axios.get(`${this.link}/listar-matriculas-admin`);
+        const response = await res.data
+        return response;
+    }
 
 }
 
