@@ -178,6 +178,16 @@ class LinkService {
         const res = await axios.post(`${this.link}/solicitud`, data);
         return res;
     }
+    async getCapacidad(idSeccion) {
+        const res = await axios.get(`${this.link}/capacidad/${idSeccion}`);
+        const response = await res.data
+        return response;
+    }
+    async getNoRepeat(idAlumno, idSeccion) {
+        const res = await axios.get(`${this.link}/norepeat/${idAlumno}/${idSeccion}`);
+        const response = await res.data
+        return response;
+    }
 
 
 }
