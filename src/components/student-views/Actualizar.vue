@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Bienvenido a MatriFast</h2>
+        <h2>Actualizar Matricula</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
@@ -50,6 +50,7 @@ export default {
   name: "Actualizar",
 
   components: {},
+  props: ["id"],
   data: () => ({
     states: [
       "Alabama",

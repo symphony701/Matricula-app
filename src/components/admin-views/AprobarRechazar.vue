@@ -9,126 +9,119 @@
           <v-data-table
             dense
             :headers="headers"
-            :items="desserts"
+            :items="matriculas"
             item-key="name"
             class="elevation-1"
+            @click:row="handleRowClick"
           ></v-data-table>
         </v-col>
       </v-row>
       <v-row justify="center">
-          <v-col cols="3"><v-btn to="/student/actualizar" class="button-register"  color="#2BA600" elevation="5" rounded large
+        <v-col cols="3"
+          ><v-btn
+            class="button-register"
+            color="#2BA600"
+            elevation="5"
+            rounded
+            large
+            @click="procesar(2)"
             >Aprobar</v-btn
-          ></v-col>
-          <v-col cols="3"><v-btn to="/student" class="button-register"  color="#2BA600" elevation="5" rounded large
+          ></v-col
+        >
+        <v-col cols="3"
+          ><v-btn
+            class="button-register"
+            color="#2BA600"
+            elevation="5"
+            rounded
+            large
+            @click="procesar(3)"
             >Rechazar</v-btn
-          ></v-col>
+          ></v-col
+        >
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
+import LinkService from "./../../services/principalService";
+import Swal from "sweetalert2";
 export default {
   name: "AprobarRechazar",
 
   components: {},
   data: () => ({
+    matriculas: [],
     headers: [
       {
-        text: "Dessert (100g serving)",
+        text: "ID:",
         align: "start",
-        sortable: false,
-        value: "name",
+        sortable: true,
+        value: "id",
       },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
+      { text: "Alumno:", value: "nameAlumno" },
+      { text: "Sección:", value: "seccion" },
+      { text: "Curso:", value: "curso" },
+      { text: "Docente:", value: "docente" },
+      { text: "Semestre:", value: "semestre" },
+      { text: "Estado:", value: "estado" },
     ],
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
-      },
-      {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%",
-      },
-      {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%",
-      },
-      {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%",
-      },
-      {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%",
-      },
-      {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%",
-      },
-      {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%",
-      },
-    ],
+    matriculaSeleccionada: null,
   }),
+  mounted: async function () {
+    const data = await LinkService.getAllMatriculasAprobarRechazar();
+    this.matriculas = data;
+  },
+  methods: {
+    handleRowClick(item) {
+      Swal.fire({
+        position: "top-end",
+        title: `Selecciono la solicitud de ${item.nameAlumno} en la sección ${item.seccion} - ${item.curso} en el semestre ${item.semestre}`,
+        showConfirmButton: false,
+        timer: 4000,
+      });
+      this.matriculaSeleccionada = item.id;
+    },
+    procesar: async function (action) {
+      if (this.matriculaSeleccionada == null) {
+        Swal.fire({
+          icon: "error",
+          title: "No ha seleccionado ninguna solicitud",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      } else {
+        if (action === 2) {
+          const aprobacion = await LinkService.procesarSolicitud(
+            this.matriculaSeleccionada,
+            action
+          );
+          Swal.fire({
+            icon: "succes",
+            title: "Matricula aprobada exitosamente",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          const data = await LinkService.getAllMatriculasAprobarRechazar();
+          this.matriculas = data;
+        } else if (action === 3) {
+          const rechazo = await LinkService.procesarSolicitud(
+            this.matriculaSeleccionada,
+            action
+          );
+          Swal.fire({
+            icon: "succes",
+            title: "Matricula rechazada exitosamente",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          const data = await LinkService.getAllMatriculasAprobarRechazar();
+          this.matriculas = data;
+        }
+      }
+    },
+  },
 };
 </script>
 <style scoped>
