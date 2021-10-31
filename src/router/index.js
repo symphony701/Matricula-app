@@ -54,7 +54,9 @@ const routes = [{
             },
             {
                 path: 'actualizar',
-                component: require('../components/student-views/Actualizar.vue').default
+                component: require('../components/student-views/Actualizar.vue').default,
+                props: true,
+                name: 'actualizarMatricula',
             },
             {
                 path: 'historial',

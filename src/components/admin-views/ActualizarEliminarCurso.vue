@@ -48,7 +48,7 @@
 <script>
 import LinkService from "./../../services/principalService";
 import Swal from "sweetalert2";
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "ActualizarEliminarCurso",
 
@@ -110,8 +110,8 @@ export default {
           cancelButtonColor: "#d33",
           confirmButtonText: "Sí,eliminar",
           cancelButtonText: "Cancelar",
-        })
-        if(result.isConfirmed){
+        });
+        if (result.isConfirmed) {
           await this.delete(this.cursoSeleccionado);
         }
       }

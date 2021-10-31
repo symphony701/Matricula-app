@@ -189,6 +189,24 @@ class LinkService {
         return response;
     }
 
+    async getAllMatriculas(idAlumno) {
+        const res = await axios.get(`${this.link}/matriculas-espera/${idAlumno}`);
+        const response = await res.data
+        return response;
+    }
+
+    async eliminarMatricula(id) {
+        const datares = await axios.delete(`${this.link}/matricula/delete/${id}`)
+        const res = await datares.data
+        return res
+    }
+
+    async getHistorialMatricula(idAlumno) {
+        const res = await axios.get(`${this.link}/matriculas-historial/${idAlumno}`);
+        const response = await res.data
+        return response;
+    }
+
 
 }
 

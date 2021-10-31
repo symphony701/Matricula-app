@@ -7,7 +7,9 @@
         </b-nav-item>
         <b-nav-item-dropdown text="MATRÍCULA" left>
           <b-dropdown-item>
-            <router-link class="route-link" :to="{ path: '/admin/aceptar-eliminar' }"
+            <router-link
+              class="route-link"
+              :to="{ path: '/admin/aceptar-eliminar' }"
               >Aprobación/Rechazo</router-link
             >
           </b-dropdown-item>
@@ -20,9 +22,17 @@
           </b-dropdown-item>
         </b-nav-item-dropdown>
 
-        <b-nav-item-dropdown id="dropdown-1" text="MANTENIMIENTO DE TABLAS" left>
+        <b-nav-item-dropdown
+          id="dropdown-1"
+          text="MANTENIMIENTO DE TABLAS"
+          left
+        >
           <b-dropdown-item class="different-drop">
-            <b-nav-item-dropdown id="dropdown-2" text="Gestión de docentes" left>
+            <b-nav-item-dropdown
+              id="dropdown-2"
+              text="Gestión de Docentes"
+              left
+            >
               <b-dropdown-item>
                 <router-link
                   class="route-link"
@@ -78,7 +88,11 @@
           <!---->
 
           <b-dropdown-item class="different-drop">
-            <b-nav-item-dropdown id="dropdown-2" text="Gestión de Secciones" left>
+            <b-nav-item-dropdown
+              id="dropdown-2"
+              text="Gestión de Secciones"
+              left
+            >
               <b-dropdown-item>
                 <router-link
                   class="route-link"
@@ -102,15 +116,16 @@
               </b-dropdown-item>
             </b-nav-item-dropdown>
           </b-dropdown-item>
-
-
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <b-navbar-nav>
         <b-nav-item>
           <v-btn to="/" depressed color="error"> Cerrar Sesión </v-btn>
         </b-nav-item>
-        <b-nav-item style="margin-top: 5px">{{this.$store.state.user.NNombre}} {{this.$store.state.user.NApellido}}</b-nav-item>
+        <b-nav-item style="margin-top: 5px"
+          >{{ this.$store.state.user.NNombre }}
+          {{ this.$store.state.user.NApellido }}</b-nav-item
+        >
       </b-navbar-nav>
     </b-navbar>
     <div class="contain-dashboard">
