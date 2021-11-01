@@ -101,35 +101,78 @@ export default {
     Contrasenia: "",
     Celular: null,
     RepeatContrasenia: "",
+    testPassword:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{4,8}$/,
+    testDni: /^(?:\D*\d){8}\D*$/,
   }),
   methods: {
     addAlumno: async function () {
-      console.log(
-        this.CAlumno,
-        this.DNI,
-        this.Correo,
-        this.Nombre,
-        this.Apellido,
-        this.Contrasenia,
-        this.Celular,
-        this.RepeatContrasenia
-      );
-      const res = await LinkService.addUser(
-        this.CAlumno,
-        parseInt(this.DNI),
-        this.Nombre,
-        this.Apellido,
-        this.Contrasenia,
-        this.Correo,
-        parseInt(this.Celular)
-      );
-      Swal.fire({  
-          icon: "success",
-          title: "Registro exitoso",
+      if (
+        this.CAlumno == "" ||
+        this.DNI == null ||
+        this.Correo == "" ||
+        this.Nombre == "" ||
+        this.Apellido == "" ||
+        this.Contrasenia == "" ||
+        this.Celular == null ||
+        this.RepeatContrasenia == ""
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Datos incompletos",
           showConfirmButton: false,
           timer: 1500,
         });
-      this.$router.push("/");
+      } else if (this.testPassword.test(this.Contrasenia) == false) {
+        Swal.fire({
+          icon: "error",
+          title:
+            "Contraseña no permitida, mínimo 4 y máximo 8 caracteres. Caracteres especiales y numero obligatorio",
+          showConfirmButton: true,
+          timer: 4000,
+        });
+      } else if (this.Contrasenia != this.RepeatContrasenia) {
+        Swal.fire({
+          icon: "error",
+          title: "Contraseñas diferentes",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else if (this.testDni.test(parseInt(this.DNI)) == false) {
+        Swal.fire({
+          icon: "error",
+          title: "DNI solo permite numeros de 8 digitos",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else {
+        const user = await LinkService.usuarioRepetido(this.CAlumno);
+        if (user[0] != undefined) {
+          Swal.fire({
+            icon: "error",
+            title: "Este usuario ya se encuentra registrado",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          const res = await LinkService.addUser(
+            this.CAlumno,
+            parseInt(this.DNI),
+            this.Nombre,
+            this.Apellido,
+            this.Contrasenia,
+            this.Correo,
+            parseInt(this.Celular)
+          );
+          Swal.fire({
+            icon: "success",
+            title: "Registro exitoso",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.$router.push("/");
+        }
+      }
     },
   },
 };

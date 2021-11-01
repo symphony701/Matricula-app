@@ -219,9 +219,15 @@ class LinkService {
         return res
     }
     async getListarMatriculas() {
-        const res = await axios.get(`${this.link}/listar-matriculas-admin`);
-        const response = await res.data
-        return response;
+            const res = await axios.get(`${this.link}/listar-matriculas-admin`);
+            const response = await res.data
+            return response;
+        }
+        /////VALIDACIONES
+    async usuarioRepetido(usuario) {
+        const datares = await axios.get(`${this.link}/usuariorepeat/${usuario}`)
+        const res = await datares.data
+        return res
     }
 
 }
