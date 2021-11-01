@@ -5,86 +5,20 @@
         <h2>Lista de matrículas</h2>
       </v-row>
       <v-row justify="space-around">
-        <v-col cols="3">
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Alumno:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Semestre:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Estado:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Docente:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                :items="states"
-                class="input-login"
-                menu-props="auto"
-                hide-details
-                label="Curso:"
-                single-line
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn
-                class="button-register"
-                color="#2BA600"
-                elevation="5"
-                rounded
-                large
-                >Buscar</v-btn
-              >
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <v-col cols="8">
+        <v-col cols="12">
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+            class="buscador"
+          ></v-text-field>
           <v-data-table
             dense
             :headers="headers"
             :items="matriculas"
+            :search="search"
             item-key="name"
             class="elevation-1"
           ></v-data-table>
@@ -102,6 +36,7 @@ export default {
 
   components: {},
   data: () => ({
+    search: "",
     matriculas: [],
     headers: [
       {
@@ -132,5 +67,8 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.buscador {
+  margin-bottom: 20px;
 }
 </style>

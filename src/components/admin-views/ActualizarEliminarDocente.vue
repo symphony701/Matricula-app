@@ -53,17 +53,17 @@ export default {
   components: {},
   data: () => ({
     headers: [
-     {
-       text:"ID:",
-       align: "start",
-       sortable: true,
-       value: "id" 
-     },
-     {text:"Nombres:",value:"nombre"}, 
-     {text:"Apellidos:",value:"apellido"}
+      {
+        text: "ID:",
+        align: "start",
+        sortable: true,
+        value: "id",
+      },
+      { text: "Nombres:", value: "nombre" },
+      { text: "Apellidos:", value: "apellido" },
     ],
     docentes: [],
-    docenteSeleccionado:null
+    docenteSeleccionado: null,
   }),
   methods: {
     handleRowClick(item) {
@@ -109,9 +109,10 @@ export default {
           cancelButtonColor: "#d33",
           confirmButtonText: "Sí,eliminar",
           cancelButtonText: "Cancelar",
-        })
-        if(result.isConfirmed){
-          await this.delete(this.docenteSeleccionado);
+        });
+        if (result.isConfirmed) {
+          const borrado = await this.delete(this.docenteSeleccionado);
+          this.$router.push("/admin/lista-docente");
         }
       }
     },
@@ -120,10 +121,10 @@ export default {
       this.docentes = data;
     },
   },
-  mounted:async function(){
+  mounted: async function () {
     const data = await LinkService.getDocente();
-    this.docentes= data;
-  }
+    this.docentes = data;
+  },
 };
 </script>
 <style scoped>

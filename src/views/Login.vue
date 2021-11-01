@@ -18,6 +18,7 @@
           label="Contraseña:"
           hide-details="auto"
           v-model="Password"
+          type="password"
         ></v-text-field>
       </v-row>
       <v-row justify="center">
@@ -50,20 +51,19 @@ export default {
     logeo: async function () {
       const data = await LinkService.login(this.CUser, this.Password);
       if (data.at(0) == null) {
-        Swal.fire({  
+        Swal.fire({
           icon: "error",
           title: "El usuario no existe",
           showConfirmButton: false,
           timer: 1500,
         });
-      }else{
-        
-        this.$store.state.user=data.at(0)
-        console.log(this.$store.state.user)
-        if(data.at(0).IdOcupacion==1){
-          this.$router.push('admin/principal')
-        }else if(data.at(0).IdOcupacion==2){
-          this.$router.push('student/principal')
+      } else {
+        this.$store.state.user = data.at(0);
+        console.log(this.$store.state.user);
+        if (data.at(0).IdOcupacion == 1) {
+          this.$router.push("admin/principal");
+        } else if (data.at(0).IdOcupacion == 2) {
+          this.$router.push("student/principal");
         }
       }
     },

@@ -111,7 +111,7 @@ export default {
             action
           );
           Swal.fire({
-            icon: "succes",
+            icon: "success",
             title: "Matricula rechazada exitosamente",
             showConfirmButton: false,
             timer: 1000,
