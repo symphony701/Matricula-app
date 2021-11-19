@@ -10,7 +10,7 @@
             <router-link
               class="route-link"
               :to="{ path: '/admin/aceptar-eliminar' }"
-              >Aprobación/Rechazo</router-link
+              >Aprobación/Rechazo de matrículas</router-link
             >
           </b-dropdown-item>
           <b-dropdown-item>
@@ -37,7 +37,7 @@
                 <router-link
                   class="route-link"
                   :to="{ path: '/admin/crear-docente' }"
-                  >Crear Docente</router-link
+                  >Crear docente</router-link
                 >
               </b-dropdown-item>
               <b-dropdown-item>
@@ -51,7 +51,7 @@
                 <router-link
                   class="route-link"
                   :to="{ path: '/admin/lista-docente' }"
-                  >Listar docente</router-link
+                  >Listar docentes</router-link
                 >
               </b-dropdown-item>
             </b-nav-item-dropdown>
@@ -65,22 +65,22 @@
                 <router-link
                   class="route-link"
                   :to="{ path: '/admin/crear-curso' }"
-                  >Crear curso</router-link
-                >
+                  >Crear curso
+                </router-link>
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
                   :to="{ path: '/admin/actualizar-eliminar-curso' }"
-                  >Actualizar/Eliminar curso</router-link
-                >
+                  >Actualizar/Eliminar curso
+                </router-link>
               </b-dropdown-item>
               <b-dropdown-item>
                 <router-link
                   class="route-link"
                   :to="{ path: '/admin/lista-curso' }"
-                  >Listar curso</router-link
-                >
+                  >Listar cursos
+                </router-link>
               </b-dropdown-item>
             </b-nav-item-dropdown>
           </b-dropdown-item>

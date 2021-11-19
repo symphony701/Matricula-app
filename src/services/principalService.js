@@ -1,10 +1,13 @@
 import axios from 'axios';
 
+//Es una librería que facilita los métodos http
+
 class LinkService {
-    link = "https://matriculaserver.herokuapp.com";
+    link = "http://localhost:3050";
     headers = {
         "Content-Type": "application/json; charset=UTF-8"
     }
+    //Es la clase que se encarga de comunicarse con el servidor
     LinkService() {}
     async addUser(CAlumno, DNI, Nombre, Apellido, Contrasenia, Correo, Telefono) {
         const data = {
@@ -122,7 +125,7 @@ class LinkService {
 
 
 
-    //docente
+    //Docente
     async addDocente(nombre, apellido) {
         const data = {
             "nombre": nombre,
@@ -156,7 +159,7 @@ class LinkService {
         return response;
     }
 
-    //solicitudes
+    //Solicitudes
 
     async getSolicitudesEspera(id) {
         const res = await axios.get(`${this.link}/solicitud-espera/${id}`);

@@ -10,7 +10,7 @@
           label="Código:"
           hide-details="auto"
           v-model="CUser"
-        ></v-text-field>
+        ></v-text-field> <!-- V-Model: Sirve para conectar la variable (CUser) creada en el script con una caja de texto -->
       </v-row>
       <v-row>
         <v-text-field
@@ -29,9 +29,17 @@
           rounded
           x-large
           @click="logeo()"
-          >Iniciar Sesión</v-btn
-        ></v-row
-      >
+          >Iniciar Sesión</v-btn> <!-- Con el método de vue @click menciono que método se ejecutará al cliquear el botón-->
+
+        <v-btn
+            class="button-volver"
+            color="primary"
+            elevation="5"
+            rounded
+            x-large
+            to="/"
+        >Volver</v-btn>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -42,6 +50,7 @@ import Swal from "sweetalert2";
 export default {
   name: "Login",
 
+  //En data creo todas las variables que utiliza esta vista
   components: {},
   data: () => ({
     CUser: "",
@@ -49,6 +58,7 @@ export default {
   }),
   methods: {
     logeo: async function () {
+      //Función asíncrona (se detiene cuando procesa algo, en este caso await). Await trae los datos del servidor
       const data = await LinkService.login(this.CUser, this.Password);
       if (data.at(0) == null) {
         Swal.fire({
@@ -58,11 +68,13 @@ export default {
           timer: 1500,
         });
       } else {
+        //Se guarda el usuario logeado en la variable global en store
         this.$store.state.user = data.at(0);
-        console.log(this.$store.state.user);
         if (data.at(0).IdOcupacion == 1) {
+          //Si se logeó un admin, lo dirigimos a la página de admin
           this.$router.push("admin/principal");
         } else if (data.at(0).IdOcupacion == 2) {
+          //Si se logeó un alumno, lo dirigimos a la página de alumno
           this.$router.push("student/principal");
         }
       }
@@ -77,9 +89,9 @@ export default {
   align-items: center;
   min-height: 100vh;
   background-image: url("./../assets/FondoDisenoExp.png");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
 h2 {
@@ -98,5 +110,9 @@ h2 {
 }
 .button-register {
   margin-top: 40px;
+}
+.button-volver {
+  margin-top: 40px;
+  margin-left: 20px;
 }
 </style>

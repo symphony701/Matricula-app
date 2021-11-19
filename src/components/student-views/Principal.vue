@@ -1,4 +1,5 @@
 <template>
+  <!-- En template se realiza toda la maquetación con html -->
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+//En script se realiza toda la funcionalidad de la página
 export default {
   name: "Principal",
 

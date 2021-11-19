@@ -79,7 +79,7 @@ export default {
       if (this.docenteSeleccionado == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado ningun docente",
+          title: "No ha seleccionado ningún docente",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -96,18 +96,18 @@ export default {
       if (this.docenteSeleccionado == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado ningun docente",
+          title: "No ha seleccionado ningún docente",
           showConfirmButton: false,
           timer: 1000,
         });
       } else {
         const result = await Swal.fire({
-          title: "¿Está seguro de eliminar el docente?",
+          title: "¿Está seguro de eliminar al docente?",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Sí,eliminar",
+          confirmButtonText: "Sí, eliminar",
           cancelButtonText: "Cancelar",
         });
         if (result.isConfirmed) {

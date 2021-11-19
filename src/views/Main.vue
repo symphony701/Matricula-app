@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-container"> <!-- PANTALLA PRINCIPAL -->
     <v-container>
       <v-row align="center" justify="center">
         <v-col class="col-main"><h1>Bienvenido a MatriFast</h1></v-col>
@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script>
+<script> //DECLARANDO EL COMPONENTE
 export default {
   name: "Main",
 

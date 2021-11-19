@@ -80,7 +80,7 @@ export default {
       if (this.cursoSeleccionado == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado ningun curso",
+          title: "No ha seleccionado ningún curso",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -97,7 +97,7 @@ export default {
       if (this.cursoSeleccionado == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado ningun curso",
+          title: "No ha seleccionado ningún curso",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -108,7 +108,7 @@ export default {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Sí,eliminar",
+          confirmButtonText: "Sí, eliminar",
           cancelButtonText: "Cancelar",
         });
         if (result.isConfirmed) {

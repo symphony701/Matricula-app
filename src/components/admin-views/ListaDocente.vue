@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Lista de docente</h2>
+        <h2>Lista de docentes</h2>
       </v-row>
       <v-row justify="space-around">
         

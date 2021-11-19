@@ -103,7 +103,7 @@ export default {
       if (this.matriculaSeleccionada == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado ningun curso",
+          title: "No ha seleccionado ninguna solicitud de matrícula",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -114,7 +114,7 @@ export default {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Sí,eliminar",
+          confirmButtonText: "Sí, eliminar",
           cancelButtonText: "Cancelar",
         });
         if (result.isConfirmed) {

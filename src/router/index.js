@@ -4,6 +4,8 @@ import Main from '../views/Main.vue'
 
 Vue.use(VueRouter)
 
+//El router se encarga de mostrar las vistas mediante URLs
+
 const routes = [{
         path: '/',
         name: 'Main',

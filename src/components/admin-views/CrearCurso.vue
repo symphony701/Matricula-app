@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Crear Curso</h2>
+        <h2>Crear curso</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
@@ -56,6 +56,14 @@ export default {
           }
         });
 
+      }
+      else {
+        Swal.fire({
+          icon: "error",
+          title: "Complete todos los campos",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
   }

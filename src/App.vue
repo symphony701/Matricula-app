@@ -1,22 +1,19 @@
 <template>
   <v-app>
-    
-
     <v-main>
-      <router-view/>
+      <router-view/> <!-- Redirige las rutas hijas -->
     </v-main>
   </v-app>
 </template>
 
-<script>
+<script> //DECLARANDO EL COMPONENTE
+  export default {
+    name: 'App',
 
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
+    data: () => ({
+      //
+    }),
+  };
 </script>
 
 <style>

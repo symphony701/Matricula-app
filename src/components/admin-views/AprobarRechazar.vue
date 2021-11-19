@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Aprobación/Rechazo matrícula</h2>
+        <h2>Aprobación/Rechazo de matrículas</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="8">
@@ -77,7 +77,7 @@ export default {
     handleRowClick(item) {
       Swal.fire({
         position: "top-end",
-        title: `Selecciono la solicitud de ${item.nameAlumno} en la sección ${item.seccion} - ${item.curso} en el semestre ${item.semestre}`,
+        title: `Seleccionó la solicitud de ${item.nameAlumno} en la sección ${item.seccion} - ${item.curso} en el semestre ${item.semestre}`,
         showConfirmButton: false,
         timer: 4000,
       });
@@ -99,7 +99,7 @@ export default {
           );
           Swal.fire({
             icon: "succes",
-            title: "Matricula aprobada exitosamente",
+            title: "Matrícula aprobada exitosamente",
             showConfirmButton: false,
             timer: 1000,
           });
@@ -111,8 +111,8 @@ export default {
             action
           );
           Swal.fire({
-            icon: "success",
-            title: "Matricula rechazada exitosamente",
+            icon: "succes",
+            title: "Matrícula rechazada exitosamente",
             showConfirmButton: false,
             timer: 1000,
           });

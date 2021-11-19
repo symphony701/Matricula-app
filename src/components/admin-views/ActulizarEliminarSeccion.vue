@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Actualizar/Eliminar seccion</h2>
+        <h2>Actualizar/Eliminar sección</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="8">
@@ -85,7 +85,7 @@ export default {
       if (this.seccionSeleccionado == null) {
         Swal.fire({
           icon: "error",
-          title: "No ha seleccionado seccion",
+          title: "No ha seleccionado ninguna sección",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -113,7 +113,7 @@ export default {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Sí,eliminar",
+          confirmButtonText: "Sí, eliminar",
           cancelButtonText: "Cancelar",
         });
         if (result.isConfirmed) {

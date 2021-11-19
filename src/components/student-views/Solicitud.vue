@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Solicitud de matricula</h2>
+        <h2>Solicitud de matrícula</h2>
       </v-row>
       <v-row justify="space-around">
         <v-col
@@ -120,7 +120,7 @@ export default {
       if (this.seccionElegida == null || this.semestreElegido == "") {
         Swal.fire({
           icon: "error",
-          title: "Llene correctamente los campos:",
+          title: "Llene correctamente los campos",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -147,7 +147,7 @@ export default {
             }
           });
           const result = await Swal.fire({
-            title: `Esta por matricularse a ${this.aux}. ¿Desea continuar?`,
+            title: `Está por matricularse a ${this.aux}. ¿Desea continuar?`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -167,7 +167,7 @@ export default {
             this.solicitudes = data1;
             Swal.fire({
               icon: "success",
-              title: "Matricula Exitosa",
+              title: "Se realizó correctamente la solicitud",
               showConfirmButton: false,
               timer: 1000,
             });
@@ -175,7 +175,7 @@ export default {
           } else {
             Swal.fire({
               icon: "error",
-              title: "No se realizo ninguna operación",
+              title: "No se realizó ninguna operación",
               showConfirmButton: false,
               timer: 1000,
             });

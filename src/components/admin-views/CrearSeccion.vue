@@ -2,7 +2,7 @@
   <div class="content-principal">
     <v-container>
       <v-row justify="center">
-        <h2>Crear Seccion</h2>
+        <h2>Crear sección</h2>
       </v-row>
       <v-row justify="center">
         <v-col cols="4">
@@ -102,7 +102,7 @@ export default {
           this.horario
         );
         Swal.fire({
-          title: "Seccion agregado correctamente",
+          title: "Sección agregada correctamente",
           icon: "success",
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
@@ -111,6 +111,14 @@ export default {
           if (result.isConfirmed) {
             this.$router.push("/admin/actualizar-eliminar-seccion");
           }
+        });
+      }
+      else {
+        Swal.fire({
+          icon: "error",
+          title: "Complete todos los campos",
+          showConfirmButton: false,
+          timer: 1500,
         });
       }
     },
