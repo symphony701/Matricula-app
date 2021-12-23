@@ -1,4 +1,5 @@
-# matricula
+# Matricula App
+Esta app depende del backend local para funcionar https://github.com/symphony701/servermatricula. Pronto se desplegara el backend en Heroku para eliminar esta dependencia local. Gracias por su comprensión
 
 ## Project setup
 ```
