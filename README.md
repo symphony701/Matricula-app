@@ -1,5 +1,5 @@
 # Matricula App
-Esta app depende del backend local para funcionar https://github.com/symphony701/servermatricula. Pronto se desplegara el backend en Heroku para eliminar esta dependencia local. Gracias por su comprensión
+El servidor de heroku para el login y el register tarda un poco en ensender. Tenga paciencia porfavor :)
 
 ## Project setup
 ```
