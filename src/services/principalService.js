@@ -3,7 +3,7 @@ import axios from 'axios';
 //Es una librería que facilita los métodos http
 
 class LinkService {
-    link = "http://localhost:3050";
+    link = "https://matriculaserver.herokuapp.com";
     headers = {
         "Content-Type": "application/json; charset=UTF-8"
     }
